@@ -1,28 +1,32 @@
 ﻿Imports System.Runtime.Remoting.Metadata.W3cXsd2001
+Imports Newtonsoft.Json
 
 Public Class Form1
 
-    Private Const strKAHOOTFILE As String = "vbchapter5kahoot.json"
-    Private answers As New List(Of ...)
 
+    Private questionList As New List(Of Question)
 
-    Dim time As Integer = lblTimer.Text = Timer.ToString
+    Private Sub LoadDataFileFromFile(filename As String)
 
-
-
-    Private Class LoadDataFileFromFile
-
-
-        Dim reader As New IO.StreamReader(strKAHOOTFILE)
+        questionList.Clear()
+        Dim reader As New IO.StreamReader(filename)
         Dim STR As String = reader.ReadToEnd
 
         'converting json file to collection of objects 
 
-        answers = jsonconvert.deserializebject(of list)()
+        questionList = JsonConvert.DeserializeObject(Of List(Of Question))(STR)
 
+    End Sub
 
-    End Class
-
-    Public Class 
-
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadDataFileFromFile("vbchapter5kahoot.json")
+    End Sub
 End Class
+
+Public Class Question
+    Public question As String
+    Public time As Integer
+    Public answers As List(Of String)
+    Public correct As Integer
+End Class
+
