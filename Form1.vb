@@ -1,14 +1,28 @@
 ﻿Imports System.Runtime.Remoting.Metadata.W3cXsd2001
 
 Public Class Form1
-    Private Sub lblQuestion_Click(sender As Object, e As EventArgs) Handles lblQuestion.Click
 
-        Dim time As Integer = lblTimer.Text = Timer.ToString
-        Dim correct As Integer
-        Dim question As String
-        Dim answers As List(Of String)
+    Private Const strKAHOOTFILE As String = "vbchapter5kahoot.json"
+    Private answers As New List(Of ...)
 
 
+    Dim time As Integer = lblTimer.Text = Timer.ToString
 
-    End Sub
+
+
+    Private Class LoadDataFileFromFile
+
+
+        Dim reader As New IO.StreamReader(strKAHOOTFILE)
+        Dim STR As String = reader.ReadToEnd
+
+        'converting json file to collection of objects 
+
+        answers = jsonconvert.deserializebject(of list)()
+
+
+    End Class
+
+    Public Class 
+
 End Class
