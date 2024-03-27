@@ -7,15 +7,15 @@ Public Class Form1
     Private questionList As New List(Of Question)
 
     Private Sub LoadDataFileFromFile(filename As String)
-
+        'clear the list
         questionList.Clear()
+        'populate the list with questions from the file
         Dim reader As New IO.StreamReader(filename)
-        Dim STR As String = reader.ReadToEnd
-        'converting json file to collection of objects 
-
-        questionList = JsonConvert.DeserializeObject(Of List(Of Question))(STR)
-
-
+        Dim str As String = reader.ReadToEnd
+        'NEW
+        'Convert json file to collection of objects
+        questionList = JsonConvert.DeserializeObject(Of List(Of Question))(str)
+        reader.Close()
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -38,17 +38,7 @@ Public Class Form1
 
 
     End Sub
-    Sub loaddatafromfile(filename As String)
-        'clear the list
-        questionList.Clear()
-        'populate the list with questions from the file
-        Dim reader As New IO.StreamReader(filename)
-        Dim str As String = reader.ReadToEnd
-        'NEW
-        'Convert json file to collection of objects
-        questionList = JsonConvert.DeserializeObject(Of List(Of Question))(str)
-        reader.Close()
-    End Sub
+
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         openQuestionJson.DefaultExt = "json"
@@ -56,7 +46,7 @@ Public Class Form1
         openQuestionJson.Title = "Select your question JSON"
         If openQuestionJson.ShowDialog = DialogResult.OK Then
             'MsgBox(OpenQuestionJSON.FileName)
-            loadDataFromFile(openQuestionJson.FileName)
+            LoadDataFileFromFile(openQuestionJson.FileName)
             'printQuestions()
         End If
         Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
