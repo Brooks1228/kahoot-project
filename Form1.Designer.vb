@@ -33,9 +33,11 @@ Partial Class Form1
         Me.lblQuestion = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.openQuestionJson = New System.Windows.Forms.OpenFileDialog()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ContextMenuStrip1.SuspendLayout()
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Timer
@@ -97,9 +99,9 @@ Partial Class Form1
         '
         'lblQuestion
         '
-        Me.lblQuestion.Location = New System.Drawing.Point(-3, -1)
+        Me.lblQuestion.Location = New System.Drawing.Point(-3, 17)
         Me.lblQuestion.Name = "lblQuestion"
-        Me.lblQuestion.Size = New System.Drawing.Size(836, 88)
+        Me.lblQuestion.Size = New System.Drawing.Size(836, 70)
         Me.lblQuestion.TabIndex = 5
         Me.lblQuestion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -123,17 +125,32 @@ Partial Class Form1
         Me.lblScore.Size = New System.Drawing.Size(2, 29)
         Me.lblScore.TabIndex = 7
         '
-        'ContextMenuStrip1
+        'openQuestionJson
         '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(181, 48)
+        Me.openQuestionJson.DefaultExt = "json"
+        Me.openQuestionJson.FileName = "OpenFileDialog1"
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(832, 24)
+        Me.MenuStrip1.TabIndex = 8
+        Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Text = "Open"
         '
         'Form1
         '
@@ -141,6 +158,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.kahoot_project_thing.My.Resources.Resources.R
         Me.ClientSize = New System.Drawing.Size(832, 498)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblQuestion)
@@ -151,11 +169,13 @@ Partial Class Form1
         Me.Controls.Add(Me.btn1)
         Me.Font = New System.Drawing.Font("Comic Sans MS", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(6)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "HollyHoot!"
-        Me.ContextMenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -170,6 +190,8 @@ Partial Class Form1
     Friend WithEvents lblQuestion As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents lblScore As Label
-    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents openQuestionJson As OpenFileDialog
+    Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
 End Class

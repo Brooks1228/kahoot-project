@@ -37,6 +37,19 @@ Public Class Form1
 
 
     End Sub
+    Sub loadquestions(filename As String)
+
+    End Sub
+
+    Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+        openQuestionJson.DefaultExt = "json"
+        openQuestionJson.Filter = "json files|*.json"
+        openQuestionJson.Title = "Select your question files"
+        If openQuestionJson.ShowDialog = DialogResult.OK Then
+            'MsgBox(openQuestionJson.FileName)
+            loadquestions(openQuestionJson.FileName)
+        End If
+    End Sub
 End Class
 
 Public Class Question
