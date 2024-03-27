@@ -38,18 +38,38 @@ Public Class Form1
 
 
     End Sub
-    Sub loadquestions(filename As String)
-
+    Sub loaddatafromfile(filename As String)
+        'clear the list
+        questionList.Clear()
+        'populate the list with questions from the file
+        Dim reader As New IO.StreamReader(filename)
+        Dim str As String = reader.ReadToEnd
+        'NEW
+        'Convert json file to collection of objects
+        questionList = JsonConvert.DeserializeObject(Of List(Of Question))(str)
+        reader.Close()
     End Sub
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         openQuestionJson.DefaultExt = "json"
-        openQuestionJson.Filter = "json files|*.json"
-        openQuestionJson.Title = "Select your question files"
+        openQuestionJson.Filter = "json files|*.json|All files|*.*"
+        openQuestionJson.Title = "Select your question JSON"
         If openQuestionJson.ShowDialog = DialogResult.OK Then
-            'MsgBox(openQuestionJson.FileName)
-            loadquestions(openQuestionJson.FileName)
+            'MsgBox(OpenQuestionJSON.FileName)
+            loadDataFromFile(openQuestionJson.FileName)
+            'printQuestions()
         End If
+        Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+        PrintQuestionsToConsole()
+    End Sub
+    Sub PrintQuestionsToConsole()
+        'loop through the question list and print the question and the correct answer
+        For i As Integer = 0 To questionList.Count - 1
+            Dim currentQuestion As Question = questionList(i)
+            Console.WriteLine(currentQuestion.question)
+            Console.WriteLine(currentQuestion.answers(currentQuestion.correct))
+            Console.WriteLine()
+        Next
     End Sub
 End Class
 
