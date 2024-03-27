@@ -19,6 +19,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         LoadDataFileFromFile("vbchapter5kahoot.json")
 
         test()
@@ -53,6 +54,7 @@ Public Class Form1
 End Class
 
 Public Class Question
+
     Public question As String
     Public time As Integer
     Public answers As List(Of String)
