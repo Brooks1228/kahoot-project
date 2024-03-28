@@ -25,10 +25,6 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.btn1 = New System.Windows.Forms.Button()
-        Me.btn4 = New System.Windows.Forms.Button()
-        Me.btn2 = New System.Windows.Forms.Button()
-        Me.btn3 = New System.Windows.Forms.Button()
         Me.lblTimer = New System.Windows.Forms.Label()
         Me.lblQuestion = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -37,52 +33,13 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.pnlAnswers = New System.Windows.Forms.Panel()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Timer
         '
         Me.Timer.Interval = 20000
-        '
-        'btn1
-        '
-        Me.btn1.BackColor = System.Drawing.Color.Red
-        Me.btn1.Location = New System.Drawing.Point(12, 285)
-        Me.btn1.Name = "btn1"
-        Me.btn1.Size = New System.Drawing.Size(394, 95)
-        Me.btn1.TabIndex = 0
-        Me.btn1.Text = "answer 1"
-        Me.btn1.UseVisualStyleBackColor = False
-        '
-        'btn4
-        '
-        Me.btn4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btn4.Location = New System.Drawing.Point(422, 386)
-        Me.btn4.Name = "btn4"
-        Me.btn4.Size = New System.Drawing.Size(394, 95)
-        Me.btn4.TabIndex = 1
-        Me.btn4.Text = "answer 4"
-        Me.btn4.UseVisualStyleBackColor = False
-        '
-        'btn2
-        '
-        Me.btn2.BackColor = System.Drawing.Color.Blue
-        Me.btn2.Location = New System.Drawing.Point(422, 285)
-        Me.btn2.Name = "btn2"
-        Me.btn2.Size = New System.Drawing.Size(394, 95)
-        Me.btn2.TabIndex = 2
-        Me.btn2.Text = "answer 2"
-        Me.btn2.UseVisualStyleBackColor = False
-        '
-        'btn3
-        '
-        Me.btn3.BackColor = System.Drawing.Color.Yellow
-        Me.btn3.Location = New System.Drawing.Point(12, 386)
-        Me.btn3.Name = "btn3"
-        Me.btn3.Size = New System.Drawing.Size(394, 95)
-        Me.btn3.TabIndex = 3
-        Me.btn3.Text = "answer 3"
-        Me.btn3.UseVisualStyleBackColor = False
         '
         'lblTimer
         '
@@ -149,8 +106,16 @@ Partial Class Form1
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
+        '
+        'pnlAnswers
+        '
+        Me.pnlAnswers.BackColor = System.Drawing.Color.Purple
+        Me.pnlAnswers.Location = New System.Drawing.Point(12, 282)
+        Me.pnlAnswers.Name = "pnlAnswers"
+        Me.pnlAnswers.Size = New System.Drawing.Size(808, 204)
+        Me.pnlAnswers.TabIndex = 9
         '
         'Form1
         '
@@ -158,15 +123,12 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.kahoot_project_thing.My.Resources.Resources.R
         Me.ClientSize = New System.Drawing.Size(832, 498)
+        Me.Controls.Add(Me.pnlAnswers)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lblScore)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblQuestion)
         Me.Controls.Add(Me.lblTimer)
-        Me.Controls.Add(Me.btn3)
-        Me.Controls.Add(Me.btn2)
-        Me.Controls.Add(Me.btn4)
-        Me.Controls.Add(Me.btn1)
         Me.Font = New System.Drawing.Font("Comic Sans MS", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -182,10 +144,6 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents Timer As Timer
-    Friend WithEvents btn1 As Button
-    Friend WithEvents btn4 As Button
-    Friend WithEvents btn2 As Button
-    Friend WithEvents btn3 As Button
     Friend WithEvents lblTimer As Label
     Friend WithEvents lblQuestion As Label
     Friend WithEvents Label1 As Label
@@ -194,4 +152,5 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents pnlAnswers As Panel
 End Class
