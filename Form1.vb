@@ -87,7 +87,10 @@ Public Class Form1
 
             AddHandler answerButton.Click, AddressOf HandleAnswerButton
             pnlAnswers.Controls.Add(answerButton)
+
         Next
+
+
     End Sub
 
     Private Sub HandleAnswerButton(sender As Button, e As EventArgs)
@@ -95,6 +98,13 @@ Public Class Form1
             MsgBox("You got it!")
         Else
             MsgBox("Wrong!")
+        End If
+        questionIndex += 1
+
+        If questionIndex < questionList.Count Then
+            LoadQuestion()
+        Else
+            MsgBox("END QUESTIONS DEBUG INDEX")
         End If
     End Sub
 
