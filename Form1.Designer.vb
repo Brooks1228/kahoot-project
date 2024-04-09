@@ -24,7 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.Timer = New System.Windows.Forms.Timer(Me.components)
         Me.lblTimer = New System.Windows.Forms.Label()
         Me.lblQuestion = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -33,13 +32,11 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ResetGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlAnswers = New System.Windows.Forms.Panel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Timer
-        '
-        Me.Timer.Interval = 20000
         '
         'lblTimer
         '
@@ -98,7 +95,7 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ResetGameToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -106,8 +103,14 @@ Partial Class Form1
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
+        '
+        'ResetGameToolStripMenuItem
+        '
+        Me.ResetGameToolStripMenuItem.Name = "ResetGameToolStripMenuItem"
+        Me.ResetGameToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.ResetGameToolStripMenuItem.Text = "Reset Game"
         '
         'pnlAnswers
         '
@@ -116,6 +119,10 @@ Partial Class Form1
         Me.pnlAnswers.Name = "pnlAnswers"
         Me.pnlAnswers.Size = New System.Drawing.Size(808, 204)
         Me.pnlAnswers.TabIndex = 9
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
         '
         'Form1
         '
@@ -143,7 +150,6 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents Timer As Timer
     Friend WithEvents lblTimer As Label
     Friend WithEvents lblQuestion As Label
     Friend WithEvents Label1 As Label
@@ -153,4 +159,6 @@ Partial Class Form1
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents pnlAnswers As Panel
+    Friend WithEvents ResetGameToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Timer1 As Timer
 End Class

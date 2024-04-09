@@ -7,6 +7,7 @@ Public Class Form1
     Private questionList As New List(Of Question)
     Private questionIndex As Integer = 0
     Private Const CORRECTTAG As String = "Correct"
+    Private timeleft As Integer = 0
 
     Private Sub LoadDataFileFromFile(filename As String)
         'clear the list
@@ -89,10 +90,12 @@ Public Class Form1
             pnlAnswers.Controls.Add(answerButton)
 
         Next
-
+        Timer1.Stop()
+        timeleft = currentQuestion.time
+        lblTimer.Text = timeleft.ToString
+        Timer1.Start()
 
     End Sub
-
     Private Sub HandleAnswerButton(sender As Button, e As EventArgs)
         If sender.Tag = CORRECTTAG Then
             MsgBox("You got it!")
@@ -108,6 +111,22 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click
+        resetGame()
+    End Sub
+    Private Sub TIMER()
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        timeleft -= 1
+        lblTimer.Text = timeleft.ToString
+        If timeleft = 0 Then
+            MsgBox("out of time!")
+            'mark current one wrong, load next question, 
+        End If
+
+    End Sub
 End Class
 
 Public Class Question
