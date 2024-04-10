@@ -3,7 +3,6 @@ Imports Newtonsoft.Json
 
 Public Class Form1
 
-
     Private questionList As New List(Of Question)
     Private questionIndex As Integer = 0
     Private Const CORRECTTAG As String = "Correct"
@@ -121,11 +120,16 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         timeleft -= 1
         lblTimer.Text = timeleft.ToString
-        If timeleft = 0 Then
+        If timeleft = 1 Then
             MsgBox("out of time!")
             'mark current one wrong, load next question, 
         End If
 
+        If timeleft <= 0 Then
+
+            Timer1.Stop()
+
+        End If
     End Sub
 End Class
 
