@@ -7,6 +7,8 @@ Public Class Form1
     Private questionIndex As Integer = 0
     Private Const CORRECTTAG As String = "Correct"
     Private timeleft As Integer = 0
+    Private score As Integer = 0
+    Private totalQuestions As Integer
 
     Private Sub LoadDataFileFromFile(filename As String)
         'clear the list
@@ -18,6 +20,7 @@ Public Class Form1
         'Convert json file to collection of objects
         questionList = JsonConvert.DeserializeObject(Of List(Of Question))(str)
         reader.Close()
+        totalQuestions = questionList.Count
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -67,6 +70,7 @@ Public Class Form1
         Next
     End Sub
     Sub LoadQuestion()
+        Timer1.Stop()
         pnlAnswers.Controls.Clear()
         Dim currentQuestion As Question = questionList(questionIndex)
         lblQuestion.Text = currentQuestion.question
@@ -89,46 +93,50 @@ Public Class Form1
             pnlAnswers.Controls.Add(answerButton)
 
         Next
-        Timer1.Stop()
         timeleft = currentQuestion.time
         lblTimer.Text = timeleft.ToString
         Timer1.Start()
 
     End Sub
     Private Sub HandleAnswerButton(sender As Button, e As EventArgs)
+        Timer1.Stop()
+
         If sender.Tag = CORRECTTAG Then
             MsgBox("You got it!")
+            score += 1
+            lblScore.Text = score.ToString
         Else
             MsgBox("Wrong!")
+
         End If
+
         questionIndex += 1
 
         If questionIndex < questionList.Count Then
             LoadQuestion()
         Else
-            MsgBox("END QUESTIONS DEBUG INDEX")
+            MsgBox($"you got {score}/{totalQuestions} right!")
         End If
     End Sub
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click
         resetGame()
     End Sub
-    Private Sub TIMER()
-
-    End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         timeleft -= 1
         lblTimer.Text = timeleft.ToString
-        If timeleft = 1 Then
-            MsgBox("out of time!")
-            'mark current one wrong, load next question, 
-        End If
 
         If timeleft <= 0 Then
 
             Timer1.Stop()
-
+            MsgBox("out of time!")
+            questionIndex += 1
+            If questionIndex < questionList.Count Then
+                LoadQuestion()
+            Else
+                MsgBox($"you got {score}/{totalQuestions} right!")
+            End If
         End If
     End Sub
 End Class
