@@ -41,6 +41,8 @@ Public Class Form1
 
     Sub resetGame()
         questionIndex = 0
+        score = 0
+        lblScore.Text = score.ToString
         LoadQuestion()
     End Sub
 
@@ -57,18 +59,18 @@ Public Class Form1
             resetGame()
         End If
         Console.WriteLine("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
-        PrintQuestionsToConsole()
+        'PrintQuestionsToConsole()
 
     End Sub
-    Sub PrintQuestionsToConsole()
-        'loop through the question list and print the question and the correct answer
-        For i As Integer = 0 To questionList.Count - 1
-            Dim currentQuestion As Question = questionList(i)
-            Console.WriteLine(currentQuestion.question)
-            Console.WriteLine(currentQuestion.answers(currentQuestion.correct))
-            Console.WriteLine()
-        Next
-    End Sub
+    'Sub PrintQuestionsToConsole()
+    ''loop through the question list and print the question and the correct answer
+    'For i As Integer = 0 To questionList.Count - 1
+    'Dim currentQuestion As Question = questionList(i)
+    '       Console.WriteLine(currentQuestion.question)
+    '      'Console.WriteLine(currentQuestion.answers(currentQuestion.correct))
+    '     'Console.WriteLine()
+    'Next
+    'End Sub
     Sub LoadQuestion()
         Timer1.Stop()
         pnlAnswers.Controls.Clear()
@@ -94,6 +96,13 @@ Public Class Form1
 
         Next
         timeleft = currentQuestion.time
+        If currentQuestion.img IsNot Nothing Then
+            picImage.Load(currentQuestion.img)
+            'picImage.ImageLocation = currentQuestion.img
+            picImage.Show()
+        Else
+            picImage.Hide()
+        End If
         lblTimer.Text = timeleft.ToString
         Timer1.Start()
 
@@ -112,11 +121,7 @@ Public Class Form1
 
         questionIndex += 1
 
-        If questionIndex < questionList.Count Then
-            LoadQuestion()
-        Else
-            MsgBox($"you got {score}/{totalQuestions} right!")
-        End If
+        checkIfFinished()
     End Sub
 
     Private Sub ResetGameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ResetGameToolStripMenuItem.Click
@@ -132,11 +137,14 @@ Public Class Form1
             Timer1.Stop()
             MsgBox("out of time!")
             questionIndex += 1
-            If questionIndex < questionList.Count Then
-                LoadQuestion()
-            Else
-                MsgBox($"you got {score}/{totalQuestions} right!")
-            End If
+            checkIfFinished()
+        End If
+    End Sub
+    Sub checkIfFinished()
+        If questionIndex < questionList.Count Then
+            LoadQuestion()
+        Else
+            MsgBox($"you got {score}/{totalQuestions} right!")
         End If
     End Sub
 End Class
@@ -147,4 +155,5 @@ Public Class Question
     Public time As Integer
     Public answers As List(Of String)
     Public correct As Integer
+    Public img As String
 End Class

@@ -35,7 +35,9 @@ Partial Class Form1
         Me.ResetGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlAnswers = New System.Windows.Forms.Panel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.picImage = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.picImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblTimer
@@ -124,12 +126,23 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 1000
         '
+        'picImage
+        '
+        Me.picImage.BackColor = System.Drawing.Color.Transparent
+        Me.picImage.Location = New System.Drawing.Point(230, 105)
+        Me.picImage.Name = "picImage"
+        Me.picImage.Size = New System.Drawing.Size(331, 160)
+        Me.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.picImage.TabIndex = 10
+        Me.picImage.TabStop = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 27.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.kahoot_project_thing.My.Resources.Resources.R
         Me.ClientSize = New System.Drawing.Size(832, 498)
+        Me.Controls.Add(Me.picImage)
         Me.Controls.Add(Me.pnlAnswers)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.lblScore)
@@ -145,6 +158,7 @@ Partial Class Form1
         Me.Text = "HollyHoot!"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.picImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -161,4 +175,5 @@ Partial Class Form1
     Friend WithEvents pnlAnswers As Panel
     Friend WithEvents ResetGameToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents picImage As PictureBox
 End Class
